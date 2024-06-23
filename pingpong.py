@@ -47,8 +47,13 @@ racket_l = Player('racket.png', 10, 150, 40, 100, 30)
 racket_r = Player('racket.png', 660, 180, 40, 100, 30)
 ball = GameSprite('ball.png', 330, 200, 40, 40, 50)
 
+font1 = font.Font(None, 40)
+lose1 = font1.render('PLAYER 1 LOSE!', True, (180, 0, 0))
+lose2 = font1.render('PLAYER 2 LOSE!', True, (180, 0, 0))
+
 speed_x = 3
 speed_y = 3
+
 finish = False
 game = True
 while game:
@@ -71,10 +76,11 @@ while game:
 
         if ball.rect.x < 0:
             finish = True
+            mw.blit(lose1, (200, 200))
 
         if ball.rect.x > win_width:
             finish = True
-
+            mw.blit(lose2, (200, 200))
 
         racket_l.reset()
         racket_r.reset()
